@@ -36,9 +36,7 @@ A redshift-dependent column selection merges the low-$z$ and high-$z$ sub-sample
 
 The simplest model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
-$$
-f_\nu^{(k)} = \frac{L_{\mathrm{bol}}^{(k)}}{4\pi\, D_L(z_k)^2}\ \cdot \theta\bigl(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i}\bigr)\cdot\theta\bigl(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i}\bigr)
-$$
+$$f_{\nu}\left(z, \lambda_{\mathrm{Edd}}, M_{\mathrm{BH},}L_{\mathrm{bol}}\right)=\xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}$$
 
 where \(\theta\) is the Heaviside step function and the two free parameters are the Eddington ratio threshold \(\xi_{1,i}\) and the black hole mass threshold \(\xi_{2,i}\).
 
