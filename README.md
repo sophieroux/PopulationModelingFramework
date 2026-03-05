@@ -34,8 +34,21 @@ A redshift-dependent column selection merges the low-$z$ and high-$z$ sub-sample
 
 #### Step (Threshold) Model
 
-The simplest model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
+The simplest Neutrino Luminosity model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
+
+$$
+L_{\nu}(\lambda_{\mathrm{Edd}}, M_{\mathrm{BH}}, L_{\mathrm{bol}}) = 
+\xi_{\mathrm{fix}} \cdot \theta(\lambda_{\mathrm{Edd}} - \xi_{1,i}) \cdot 
+\theta(\log M_{\mathrm{BH}} - \xi_{2,i}) \cdot L_{\mathrm{bol}}
+$$
+
+$$
+f_{\nu}(z, \lambda_{\mathrm{Edd}}, M_{\mathrm{BH}}, L_{\mathrm{bol}}) = 
+\frac{L_{\nu}(\lambda_{\mathrm{Edd}}, M_{\mathrm{BH}}, L_{\mathrm{bol}})}{4\pi D_L(z)^2}
+$$
+
+The entire flux function can then be expressed as:
 $$
 f_{\nu}\left(z, \lambda_{\mathrm{Edd}}, M_{\mathrm{BH},}L_{\mathrm{bol}}\right)=\xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}
 $$
