@@ -7,13 +7,19 @@ High-energy neutrinos detected by IceCube might well originate from active galac
 
 ## What kind of tool is needed?
 
+-> AGN Population Modeling Framework:
+
 ![AGN Population Modeling Framework](PopulationModelingFramework.png)
 
 In this framework, each module is validated independently on synthetic data. In essence, a previously intractable inference problem becomes computationally accessible (but not yet astrophysically complete).
 
-## Source Catalog
+## Physical Forward Modeling
 
-The analysis uses the **SPIDERS** AGN catalog (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
+
+
+### Source Catalog listing AGN Properties 
+
+The analysis uses the **SPIDERS** AGN catalog (SDSS-IV DR16) (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
 
 - Redshift ($z$)
 - Bolometric luminosity $L_{\mathrm{bol}}$
@@ -22,9 +28,11 @@ The analysis uses the **SPIDERS** AGN catalog (`spiders_quasar_bhmass-DR16-v1.fi
 
 A redshift-dependent column selection merges the low-$z$ and high-$z$ sub-samples into a single clean catalog of ~7000 AGN.
 
-## Neutrino Flux Models
+### A Rule (Luminosity Model) mapping AGN -> Neutrino Emission
 
-### Step (Threshold) Model
+
+
+#### Step (Threshold) Model
 
 The simplest model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
@@ -34,7 +42,7 @@ $$
 
 where \(\theta\) is the Heaviside step function and the two free parameters are the Eddington ratio threshold \(\xi_{1,i}\) and the black hole mass threshold \(\xi_{2,i}\).
 
-### Extended (Complex) Model
+#### Extended (Complex) Model
 
 A richer model adds redshift evolution, a luminosity power law, and configurable step-function signs:
 
