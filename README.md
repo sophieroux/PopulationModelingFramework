@@ -22,7 +22,7 @@ A redshift-dependent column selection merges the low-$z$ and high-$z$ sub-sample
 The simplest model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
 $$
-f_\nu^{(k)} = \frac{L_{\mathrm{bol}}^{(k)}}{4\pi\, D_L(z_k)^2}\ \cdot \theta\bigl(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i}\bigr)\;\theta\bigl(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i}\bigr)
+f_\nu^{(k)} = \frac{L_{\mathrm{bol}}^{(k)}}{4\pi\, D_L(z_k)^2}\ \cdot \theta\bigl(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i}\bigr)\cdot\theta\bigl(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i}\bigr)
 $$
 
 where \(\theta\) is the Heaviside step function and the two free parameters are the Eddington ratio threshold \(\xi_{1,i}\) and the black hole mass threshold \(\xi_{2,i}\).
@@ -32,7 +32,7 @@ where \(\theta\) is the Heaviside step function and the two free parameters are 
 A richer model adds redshift evolution, a luminosity power law, and configurable step-function signs:
 
 $$
-f_\nu^{(k)} = (1+z_k)^{\xi_3}\cdot\theta\bigl(\mathrm{sign}(\xi_5)\,(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i})\bigr)\theta\!\bigl(\mathrm{sign}(\xi_6)\,(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i})\bigr)\frac{(L_{\mathrm{bol}}^{(k)})^{\xi_4}}{4\pi\, D_L(z_k)^2}
+f_\nu^{(k)} = (1+z_k)^{\xi_3}\cdot\theta\bigl(\mathrm{sign}(\xi_5)\,(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i})\bigr)\theta\cdot\bigl(\mathrm{sign}(\xi_6)\,(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i})\bigr)\frac{(L_{\mathrm{bol}}^{(k)})^{\xi_4}}{4\pi\, D_L(z_k)^2}
 $$
 
 This model has six parameters (\(\xi_{1,i}\) through \(\xi_6\)) and is explored with both 2D and 3D latent-space VAE architectures.
