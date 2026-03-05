@@ -51,8 +51,7 @@ $$
 f_\nu(z, L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}) = \xi_{\rm fix}  \theta(\text{sign}(\xi_5) (\lambda_{\rm Edd} - \xi_{1,i}))  \theta(\text{sign}(\xi_6) (\log M_{\rm BH} - \xi_{2,i}))  (1+z)^{\xi_3} \frac{L_{\rm bol}^{\xi_4}}{4\pi D_L(z)^2}
 $$
 
-
-This model has six parameters (\(\xi_{1,i}\) through \(\xi_6\)) and is explored with both 2D and 3D latent-space VAE architectures.
+where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the source, $\lambda_{\mathrm{Edd}}$ is the Eddington ratio, $M_{\mathrm{BH}}$ is the black hole mass, $L_{\mathrm{bol}}$ is the bolometric luminosity, $D_L(z)$ is the luminosity distance at redshift $z$, computed using the Planck18 cosmology, $\theta(x)$ is the Heaviside step function and $\boldsymbol{\xi} = (\xi_{1,i}, \xi_{2,i}, \xi_3, \xi_4, \xi_5, \xi_6)$ is the vector of population-level parameters.
 
 ## Data Generation
 
