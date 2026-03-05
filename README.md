@@ -8,10 +8,10 @@ High-energy neutrinos detected by IceCube likely originate from active galactic 
 
 The analysis uses the **SPIDERS DR16** AGN catalog (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
 
-- Redshift \(z\)
-- Bolometric luminosity \(L_{\mathrm{bol}}\)
-- Black hole mass \(\log M_{\mathrm{BH}}\)
-- Eddington ratio \(\lambda_{\mathrm{Edd}} = L_{\mathrm{bol}} / L_{\mathrm{Edd}}\)
+- Redshift ($z$)
+- Bolometric luminosity $L_{\mathrm{bol}}$
+- Black hole mass $\log M_{\mathrm{BH}}$
+- Eddington ratio $\lambda_{\mathrm{Edd}} = L_{\mathrm{bol}} / L_{\mathrm{Edd}}$
 
 A redshift-dependent column selection merges the low-\(z\) and high-\(z\) sub-samples into a single clean catalog of ~7000 AGN.
 
