@@ -48,8 +48,9 @@ where \(\theta\) is the Heaviside step function and the two free parameters are 
 A richer model adds redshift evolution, a luminosity power law, and configurable step-function signs:
 
 $$
-f_\nu^{(k)} = (1+z_k)^{\xi_3}\cdot\theta\bigl(\mathrm{sign}(\xi_5)\,(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i})\bigr)\theta\cdot\bigl(\mathrm{sign}(\xi_6)\,(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i})\bigr)\frac{(L_{\mathrm{bol}}^{(k)})^{\xi_4}}{4\pi\, D_L(z_k)^2}
+f_\nu(z, L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}) = \xi_{\rm fix} \, \theta(\text{sign}(\xi_5) (\lambda_{\rm Edd} - \xi_{1,i})) \, \theta(\text{sign}(\xi_6) (\log M_{\rm BH} - \xi_{2,i})) \, (1+z)^{\xi_3}\, \frac{L_{\rm bol}^{\xi_4}}{4\pi D_L(z)^2}
 $$
+
 
 This model has six parameters (\(\xi_{1,i}\) through \(\xi_6\)) and is explored with both 2D and 3D latent-space VAE architectures.
 
