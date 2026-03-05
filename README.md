@@ -45,7 +45,7 @@ where \(\theta\) is the Heaviside step function and the two free parameters are 
 
 #### Extended (Complex) Model
 
-A richer model adds redshift evolution, a luminosity power law, and configurable step-function signs:
+A more complex model, utilized to demonstrate dimension reduction (6D+ input -> 3D,2D Latent) adds redshift evolution, a luminosity power law, and configurable step-function signs:
 
 $$
 f_\nu(z, L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}) = \xi_{\rm fix}  \theta(\text{sign}(\xi_5) (\lambda_{\rm Edd} - \xi_{1,i}))  \theta(\text{sign}(\xi_6) (\log M_{\rm BH} - \xi_{2,i}))  (1+z)^{\xi_3} \frac{L_{\rm bol}^{\xi_4}}{4\pi D_L(z)^2}
