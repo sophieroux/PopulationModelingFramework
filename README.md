@@ -3,9 +3,13 @@
 
 ## Scientific Motivation
 
-High-energy neutrinos detected by IceCube might well originate from active galactic nuclei (AGN), yet we cannot infer individual AGN neutrino fluxes. We can, however, ask: "What kind of population could have produced what we see?". Essentially, we observe too few neutrinos to identify sources, but not too few to constrain populations. In this hierarchical modeling approach, we have population-level parameters, which are thresholds/rules that determine which sources emit neutrinos, as well as source-level parameters which are unique properties of each source. To achieve this, we need to choose appropriate Luminosity Models and tackle Computational Challenges. Direct Bayesian Inference is impossible for high dimensional inputs. To do it properly, we need to integrate over thousands of dimensions, consider every possible AGN configuration and for each one, compute likelihoods. To solve for this, we learn a surrogate for the forward-model outputs (expected rates) to make likelihood evaluation fast.
+High-energy neutrinos detected by IceCube might well originate from active galactic nuclei (AGN), yet we cannot infer individual AGN neutrino fluxes. We can, however, ask: "What kind of population could have produced what we see?". Essentially, we observe too few neutrinos to identify sources, but not too few to constrain populations. In this hierarchical modeling approach, AGN are viewed as a statistical ensemble and we have population-level parameters, which are thresholds/rules that determine which sources emit neutrinos, as well as source-level parameters which are unique properties of each source. To achieve this, we need to choose appropriate Luminosity Models and tackle Computational Challenges. Direct Bayesian Inference is impossible for high dimensional inputs. To do it properly, we need to integrate over thousands of dimensions, consider every possible AGN configuration and for each one, compute likelihoods. To solve for this, we learn a surrogate for the forward-model outputs (expected rates) to make likelihood evaluation fast.
+
+## What kind of tool is needed?
 
 ![AGN Population Modeling Framework](PopulationModelingFramework.png)
+
+In this framework, each module is validated independently on synthetic data. In essence, a previously intractable inference problem becomes computationally accessible (but not yet astrophysically complete).
 
 ## Source Catalog
 
