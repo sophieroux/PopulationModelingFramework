@@ -1,8 +1,11 @@
-# Population-Level Neutrino Source Identification with Variational Autoencoders
+# Decoding the Sky: Machine Learning Approaches to Bayesian Modeling of Neutrino Source Populations 
+## Population Modeling for AGN Neutrinos under Extreme Sparsity using a Variational Autoencoder (VAE)
 
 ## Scientific Motivation
 
-High-energy neutrinos detected by IceCube might well originate from active galactic nuclei (AGN), but which AGN sub-populations produce the observed neutrino flux remains an open problem.
+High-energy neutrinos detected by IceCube might well originate from active galactic nuclei (AGN), yet we cannot infer individual AGN neutrino fluxes. We can, however, ask: "What kind of population could have produced what we see?". Essentially, we observe too few neutrinos to identify sources, but not too few to constrain populations. In this hierarchical modeling approach, we have population-level parameters, which are thresholds/rules that determine which sources emit neutrinos, as well as source-level parameters which are unique properties of each source. To achieve this, we need to choose appropriate Luminosity Models and tackle Computational Challenges. Direct Bayesian Inference is impossible for high dimensional inputs. To do it properly, we need to integrate over thousands of dimensions, consider every possible AGN configuration and for each one, compute likelihoods. To solve for this, we learn a surrogate for the forward-model outputs (expected rates) to make likelihood evaluation fast.
+
+![AGN Population Modeling Framework](path/to/image.png)
 
 ## Source Catalog
 
