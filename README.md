@@ -1,0 +1,103 @@
+# Population-Level Neutrino Source Identification with Variational Autoencoders
+
+## Scientific Motivation
+
+High-energy neutrinos detected by IceCube likely originate from active galactic nuclei (AGN), but pinpointing which AGN sub-populations produce the observed neutrino flux remains an open problem. Rather than associating individual neutrinos with individual sources, this project takes a **population-level** approach: it models the expected neutrino count for every AGN in a catalog as a function of the source's physical properties, then asks which model parameters best explain the observed counts across the entire population simultaneously.
+
+## Source Catalog
+
+The analysis uses the **SPIDERS DR16** AGN catalog (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
+
+- Redshift \(z\)
+- Bolometric luminosity \(L_{\mathrm{bol}}\)
+- Black hole mass \(\log M_{\mathrm{BH}}\)
+- Eddington ratio \(\lambda_{\mathrm{Edd}} = L_{\mathrm{bol}} / L_{\mathrm{Edd}}\)
+
+A redshift-dependent column selection merges the low-\(z\) and high-\(z\) sub-samples into a single clean catalog of ~7000 AGN.
+
+## Neutrino Flux Models
+
+### Step (Threshold) Model
+
+The simplest model assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
+
+$$
+f_\nu^{(k)} = \frac{L_{\mathrm{bol}}^{(k)}}{4\pi\, D_L(z_k)^2}\;\theta\!\bigl(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i}\bigr)\;\theta\!\bigl(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i}\bigr)
+$$
+
+where \(\theta\) is the Heaviside step function and the two free parameters are the Eddington ratio threshold \(\xi_{1,i}\) and the black hole mass threshold \(\xi_{2,i}\).
+
+### Extended (Complex) Model
+
+A richer model adds redshift evolution, a luminosity power law, and configurable step-function signs:
+
+$$
+f_\nu^{(k)} = (1+z_k)^{\xi_3}\;\theta\!\bigl(\mathrm{sign}(\xi_5)\,(\lambda_{\mathrm{Edd}}^{(k)} - \xi_{1,i})\bigr)\;\theta\!\bigl(\mathrm{sign}(\xi_6)\,(\log M_{\mathrm{BH}}^{(k)} - \xi_{2,i})\bigr)\;\frac{(L_{\mathrm{bol}}^{(k)})^{\xi_4}}{4\pi\, D_L(z_k)^2}
+$$
+
+This model has six parameters (\(\xi_{1,i}\) through \(\xi_6\)) and is explored with both 2D and 3D latent-space VAE architectures.
+
+## Data Generation
+
+For each source \(k\), the observed neutrino count is drawn from a Poisson distribution:
+
+$$
+n_k \sim \mathrm{Poisson}\!\bigl(10^{\mathrm{norm}} \cdot f_\nu^{(k)} + \mathrm{bg}\bigr)
+$$
+
+where `norm` controls the overall signal strength and `bg` is a uniform background rate.
+
+## Inference Methods
+
+### Direct Grid Search (Non-VAE)
+
+For the two-parameter step model, the Poisson log-likelihood
+
+$$
+\ln\mathcal{L}(\xi_{1,i},\,\xi_{2,i}) = \sum_k \bigl[n_k \ln\lambda_k - \lambda_k\bigr], \qquad \lambda_k = 10^{\mathrm{norm}}\,f_\nu^{(k)} + \mathrm{bg}
+$$
+
+is evaluated on a coarse grid followed by a fine grid centered on the coarse maximum. This yields the posterior surface (flat prior), the MLE, and associated test statistics.
+
+### Variational Autoencoder (VAE)
+
+For models with more parameters or when amortized inference is desired, a VAE learns a compressed latent representation \(\mathbf{z}\) of the population-level model parameters:
+
+- **Encoder**: A per-source MLP processes each AGN's features, followed by a top-\(k\) selection and an aggregation network that maps the full catalog to a latent distribution \(q(\mathbf{z} \mid \mathbf{x}) = \mathcal{N}(\mu, \sigma^2)\).
+- **Decoder**: Maps a latent sample \(\mathbf{z}\) back to predicted neutrino counts for every source. The decoder is trained so that its output approximates the forward model \(f_\nu\) for the parameters encoded in \(\mathbf{z}\).
+- **Architecture**: Fully connected residual blocks (BN → ReLU → Linear → Dropout) throughout.
+
+After training, inference proceeds by encoding the observed data into \(\mathbf{z}\), then evaluating the Poisson log-likelihood of decoder predictions on a grid in latent space to obtain the posterior.
+
+## Statistical Diagnostics
+
+Each model configuration reports:
+
+| Metric | Definition |
+|---|---|
+| \(\log\mathcal{L}(\mathrm{bkg})\) | Log-likelihood under the background-only (null) model |
+| \(\log\mathcal{L}(H_1)\) | Log-likelihood at the MLE under the signal + background model |
+| \(\Delta\log\mathcal{L}\) | Difference \(\log\mathcal{L}(H_1) - \log\mathcal{L}(\mathrm{bkg})\) |
+| TS | Test statistic \(= 2\,\Delta\log\mathcal{L}\) |
+| \(\log_{10}(\mathrm{Odds})\) | Log-base-10 likelihood ratio |
+| \(\sigma\) equiv | Gaussian-equivalent significance \(\approx \sqrt{\mathrm{TS}}\) |
+| Correlation | Pearson \(r\) between predicted and true per-source signal |
+| RMSE | Root mean square error between predicted and true signal |
+
+## Notebooks
+
+| Notebook | Description |
+|---|---|
+| `catalog.ipynb` | Loads and cleans the SPIDERS catalog; computes derived quantities; produces diagnostic histograms and scatter plots |
+| `population_step_nu_lumi.ipynb` | Non-VAE step model: grid-search posterior, likelihood/posterior surface plots, full statistical summary |
+| `population_vae_step_nu_lumi.ipynb` | VAE step model: trains the encoder–decoder on the two-parameter step model, evaluates multiple configurations, latent-space visualisation, odds ratio overview |
+| `population_vae_complex_nu_lumi_2d_latent.ipynb` | VAE with 2D latent space for the six-parameter extended model |
+| `population_vae_complex_nu_lumi_3d_latent.ipynb` | VAE with 3D latent space for the six-parameter extended model |
+
+## Dependencies
+
+- Python 3.10+
+- PyTorch
+- NumPy, SciPy, Pandas
+- Astropy (cosmology calculations, FITS I/O)
+- Matplotlib
