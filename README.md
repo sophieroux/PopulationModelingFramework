@@ -40,8 +40,8 @@ $$
 f_{\nu}\left(z, \lambda_{\mathrm{Edd}}, M_{\mathrm{BH},}L_{\mathrm{bol}}\right)=\xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}
 $$
 
+where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the source, and $D_L(z)$ is the luminosity distance at redshift $z$, computed using the Planck18 cosmology. The step model is parameterized by three population-level parameters, out of which two will be learned by a neural network in the subsequent analysis steps. \textbf{$\xi_{\mathrm{fix}}$} is a fixed normalization parameter that accounts for the overall neutrino production efficiency, detector efficiency, as well as observation time. \textbf{$\xi_{1,i}$} is the threshold on the Eddington ratio $\lambda_{\mathrm{Edd}}$. This parameter is learned. Only sources with $\lambda_{\mathrm{Edd}} \geq \xi_{1,i}$ contribute to the neutrino luminosity. The second learned parameter is \textbf{$\xi_{2,i}$}, the threshold on the logarithm of the black hole mass $\log M_{\mathrm{BH}}$. Only sources with $\log M_{\mathrm{BH}} \geq \xi_{2,i}$ contribute to the neutrino luminosity.
 
-where \(\theta\) is the Heaviside step function and the two free parameters are the Eddington ratio threshold \(\xi_{1,i}\) and the black hole mass threshold \(\xi_{2,i}\).
 
 #### Extended (Complex) Model
 
