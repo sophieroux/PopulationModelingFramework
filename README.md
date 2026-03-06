@@ -141,3 +141,9 @@ Each model configuration reports:
 - NumPy, SciPy, Pandas
 - Astropy (cosmology calculations, FITS I/O)
 - Matplotlib
+
+## TODO
+
+- fix H0, H1 naming, odds ratio calc
+- change norm in catalog.ipynb, population_step_nu_lumi.ipynb
+- try full catalog in all notebooks
