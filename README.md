@@ -15,9 +15,9 @@ In this framework, each module is validated independently on synthetic data. In 
 
 ## Physical Forward Modeling
 
-In this step, one essentially defines a hypothetical universe using a catalog of AGN combined with Luminosity models.
+In this step, one essentially defines a hypothetical universe using a 1) catalog of AGN combined with 2) Luminosity models.
 
-### Source Catalog listing AGN Properties 
+### 1) Source Catalog listing AGN Properties 
 
 The analysis uses the **SPIDERS** AGN catalog (SDSS-IV DR16) (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
 
@@ -28,7 +28,7 @@ The analysis uses the **SPIDERS** AGN catalog (SDSS-IV DR16) (`spiders_quasar_bh
 
 A redshift-dependent column selection merges the low- $z$ and high- $z$ sub-samples into a single clean catalog of ~7000 AGN.
 
-### A Rule (Luminosity Model) mapping AGN -> Neutrino Emission
+### 2) A Rule (Luminosity Model) mapping AGN -> Neutrino Emission
 
 At the current stage of the analysis, two different Luminosity Models are utilized, a simple step model for a proof-of-principle and a more complex model to verify dimensionality reduction.
 
