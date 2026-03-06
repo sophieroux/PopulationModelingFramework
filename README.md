@@ -82,23 +82,26 @@ where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the
 For a fixed AGN catalog and Luminosity Model, observed neutrino counts are realizations of a Poisson point process 
 
 $$
-n_i \sim \text{Poisson}(\lamda_{i}]
+n_i \sim \text{Poisson}(\lambda_{i}]
 $$
 
-### Statistical Realizations
-
-
-
-
-## Data Generation
-
-For each source \(k\), the observed neutrino count is drawn from a Poisson distribution:
+Effectively in the code, for each source \(i\), the observed neutrino count is drawn from a Poisson distribution:
 
 $$
-n_k \sim \mathrm{Poisson}\bigl(10^{\mathrm{norm}} \cdot f_\nu^{(k)} + \mathrm{bg}\bigr)
+n_i \sim \mathrm{Poisson}\bigl(10^{\mathrm{norm}} \cdot f_\nu^{(i)} + \mathrm{bg}\bigr)
 $$
 
 where `norm` controls the overall signal strength and `bg` is a uniform background rate.
+
+where $\lambda_{i} = f_{\nu,i} + text{background}$ comes from the forward model. $f_{\nu,i}$ are expected signal counts from the flux model. 
+
+### Statistical Realizations
+
+This process is repeated to create multiple synthetic datasets representing possible observed neutrino event distributions. The training loss in the ML part of this pipeline matches exactly this process. 
+
+
+
+
 
 ## Inference Methods
 
