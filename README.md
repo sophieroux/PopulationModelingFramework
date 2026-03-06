@@ -82,7 +82,7 @@ where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the
 For a fixed AGN catalog and Luminosity Model, observed neutrino counts are realizations of a Poisson point process 
 
 $$
-n_i \sim \text{Poisson}(\lambda_{i}]
+n_i \sim \text{Poisson}(\lambda_{i})
 $$
 
 Effectively in the code, for each source \(i\), the observed neutrino count is drawn from a Poisson distribution:
@@ -93,7 +93,7 @@ $$
 
 where `norm` controls the overall signal strength and `bg` is a uniform background rate.
 
-where $\lambda_{i} = f_{\nu,i} + text{background}$ comes from the forward model. $f_{\nu,i}$ are expected signal counts from the flux model. 
+where $\lambda_{i} = f_{\nu,i} + \mathrm{bg}$ comes from the forward model. $f_{\nu,i}$ are expected signal counts from the flux model. 
 
 ### Statistical Realizations
 
