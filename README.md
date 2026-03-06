@@ -21,7 +21,7 @@ In this framework, each module is validated independently on synthetic data. In 
 
 The analysis uses the **SPIDERS** AGN catalog (SDSS-IV DR16) (`spiders_quasar_bhmass-DR16-v1.fits`), which provides per-source measurements of:
 
-- Redshift ($z$)
+- Redshift $z$
 - Bolometric luminosity $L_{\mathrm{bol}}$
 - Black hole mass $\log M_{\mathrm{BH}}$
 - Eddington ratio $\lambda_{\mathrm{Edd}} = L_{\mathrm{bol}} / L_{\mathrm{Edd}}$
