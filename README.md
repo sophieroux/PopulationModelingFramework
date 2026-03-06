@@ -38,19 +38,19 @@ A redshift-dependent column selection merges the low- $z$ and high- $z$ sub-samp
 The simplest Neutrino Luminosity model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
 $$
-L_{\nu}(L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}) = 
+L_{\nu}(z, \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}) = 
 \xi_{\mathrm{fix}} \cdot \theta(\lambda_{\mathrm{Edd}} - \xi_{1,i}) \cdot 
 \theta(\log M_{\mathrm{BH}} - \xi_{2,i}) \cdot L_{\mathrm{bol}}
 $$
 
 $$
-f_{\nu}(z, L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}) = 
+f_{\nu}(z, L_{\rm bol},  \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}) = 
 \frac{L_{\nu}(\lambda_{\mathrm{Edd}}, M_{\mathrm{BH}}, L_{\mathrm{bol}})}{4\pi D_L(z)^2}
 $$
 
 The entire flux function can then be expressed as:
 $$
-f_{\nu}\left(z, L_{\rm bol}, \log M_{\rm BH}, \lambda_{\rm Edd}; \boldsymbol{\xi}\right)=\xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}
+f_{\nu}\left(z, L_{\rm bol},  \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}\right)=\xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}
 $$
 
 where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the source, and $D_L(z)$ is the luminosity distance at redshift $z$, computed using the Planck18 cosmology. The step model is parameterized by three population-level parameters, out of which two will be learned by a neural network in the subsequent analysis steps. $\xi_{\mathrm{fix}}$ is a fixed normalization parameter that accounts for the overall neutrino production efficiency, detector efficiency, as well as observation time. $\xi_{1,i}$ is the threshold on the Eddington ratio $\lambda_{\mathrm{Edd}}$. This parameter is learned. Only sources with $\lambda_{\mathrm{Edd}} \geq \xi_{1,i}$ contribute to the neutrino luminosity. The second learned parameter is $\xi_{2,i}$, the threshold on the logarithm of the black hole mass $\log M_{\mathrm{BH}}$. Only sources with $\log M_{\mathrm{BH}} \geq \xi_{2,i}$ contribute to the neutrino luminosity.
