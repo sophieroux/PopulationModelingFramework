@@ -38,7 +38,7 @@ A redshift-dependent column selection merges the low- $z$ and high- $z$ sub-samp
 The simplest Neutrino Luminosity model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
 $$
-L_{\nu}(z, \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}) = 
+L_{\nu}( L_{\rm bol},  \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}) = 
 \xi_{\mathrm{fix}} \cdot \theta(\lambda_{\mathrm{Edd}} - \xi_{1,i}) \cdot 
 \theta(\log M_{\mathrm{BH}} - \xi_{2,i}) \cdot L_{\mathrm{bol}}
 $$
@@ -50,7 +50,7 @@ $$
 
 The entire flux function can then be expressed as:
 $$
-f_{\nu}\left(z, L_{\rm bol},  \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}\right) =
+f_{\nu}(z, L_{\rm bol},  \lambda_{\rm Edd}, \log M_{\rm BH}; \boldsymbol{\xi}) =
 \xi_{\text{fix}} \cdot \theta\left(\lambda_{\mathrm{Edd}}-\xi_{1,i}\right) \cdot \theta\left(M_{\mathrm{BH}}-\xi_{2,i}\right) \cdot \frac{L_{\mathrm{bol}}}{4 \pi D_L(z)^2}
 $$
 
