@@ -77,6 +77,19 @@ where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the
 
 ## Statistical Representation
 
+### Event Generation
+
+For a fixed AGN catalog and Luminosity Model, observed neutrino counts are realizations of a Poisson point process 
+
+$$
+n_i \sim \text{Poisson}(\lamda_{i}]
+$$
+
+### Statistical Realizations
+
+
+
+
 ## Data Generation
 
 For each source \(k\), the observed neutrino count is drawn from a Poisson distribution:
