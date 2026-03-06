@@ -99,8 +99,9 @@ where $\lambda_{i} = f_{\nu,i} + \mathrm{bg}$ comes from the forward model. $f_{
 
 This process is repeated to create multiple synthetic datasets representing possible observed neutrino event distributions. The training loss in the ML part of this pipeline matches exactly this process. 
 
+## Machine Learning Inference & Latent Space Analysis
 
-
+ML in this framework enables tractable Bayesian Inference for Complex Luminosity Models with high input dimensionality. 
 
 
 ## Inference Methods
