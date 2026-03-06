@@ -74,6 +74,9 @@ $$
 
 where $f_{\nu}$ is the neutrino flux at the detector, $z$ is the redshift of the source, $\lambda_{\mathrm{Edd}}$ is the Eddington ratio, $M_{\mathrm{BH}}$ is the black hole mass, $L_{\mathrm{bol}}$ is the bolometric luminosity, $D_L(z)$ is the luminosity distance at redshift $z$, computed using the Planck18 cosmology, $\theta(x)$ is the Heaviside step function and $\boldsymbol{\xi} = (\xi_{1,i}, \xi_{2,i}, \xi_3, \xi_4, \xi_5, \xi_6)$ is the vector of population-level parameters.
 
+
+## Statistical Representation
+
 ## Data Generation
 
 For each source \(k\), the observed neutrino count is drawn from a Poisson distribution:
