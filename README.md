@@ -30,10 +30,9 @@ A redshift-dependent column selection merges the low- $z$ and high- $z$ sub-samp
 
 ### A Rule (Luminosity Model) mapping AGN -> Neutrino Emission
 
-
+In the current stage of the analysis, two different Luminosity Models are utilized, a simple step model for a proof-of-principle and a more complex model to verify dimensionality reduction.
 
 #### Step (Threshold) Model
-
 
 The simplest Neutrino Luminosity model used for a proof-of-principle assumes that only AGN above certain thresholds in black hole mass and accretion rate produce neutrinos:
 
