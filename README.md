@@ -26,7 +26,7 @@ The analysis uses the **SPIDERS** AGN catalog (SDSS-IV DR16) (`spiders_quasar_bh
 - Black hole mass $\log M_{\mathrm{BH}}$
 - Eddington ratio $\lambda_{\mathrm{Edd}} = L_{\mathrm{bol}} / L_{\mathrm{Edd}}$
 
-A redshift-dependent column selection merges the low-\(z\) and high-$z$ sub-samples into a single clean catalog of ~7000 AGN.
+A redshift-dependent column selection merges the low-$z$ and high-$z$ sub-samples into a single clean catalog of ~7000 AGN.
 
 ### A Rule (Luminosity Model) mapping AGN -> Neutrino Emission
 
