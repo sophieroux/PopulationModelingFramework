@@ -153,7 +153,8 @@ $$\mathcal{L}_{\mathrm{KL}}
 = \mathrm{KL}\!\left(q_\phi(z\mid x)\,\|\,\mathcal{N}(0,I)\right)
 = \frac{1}{2}\sum_{j=1}^{d}\left(\mu_j^2 + \sigma_j^2 - \log\sigma_j^2 - 1\right)$$
 
-where $d=\texttt{latent\dim}$ and $\sigma_j^2=\exp(\log\sigma_j^2)$.
+where d is the latent dim and $\sigma_j^2=\exp(\log\sigma_j^2)$.
+
 
 #### Training Details
 
