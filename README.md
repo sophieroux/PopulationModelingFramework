@@ -88,7 +88,7 @@ $$
 n_i \sim \text{Poisson}(\lambda_{i})
 $$
 
-Effectively in the code, for each source \(i\), the observed neutrino count is drawn from a Poisson distribution:
+Effectively in the code, for each source i, the observed neutrino count is drawn from a Poisson distribution:
 
 $$
 n_i \sim \mathrm{Poisson}\bigl(10^{\mathrm{norm}} \cdot f_{\nu,i} + \mathrm{bg}\bigr)
