@@ -142,7 +142,7 @@ As mentioned before, the decoder outputs a non-negative per-source signal predic
 
 #### Loss Functions
 
-As is a characteristic objective for a VAE, the total loss function is made up of two parts, reconstruction loss $ \mathcal{L}_{\text{recon}} $ and regularization loss term $ \mathcal{L}_{\mathrm{KL}} $ that regularizes the latent distribution toward a standard normal prior (Kullback-Leibler divergence) and $\beta = 1$. 
+As is characteristic for a Variational Autoencoder (VAE), the total loss function consists of two parts: the reconstruction loss $\mathcal{L}_{\text{recon}}$ and the regularization loss term $\mathcal{L}_{\mathrm{KL}}$, which regularizes the latent distribution toward a standard normal prior via the Kullback–Leibler divergence. The total loss is given by $\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{recon}} + \beta \mathcal{L}_{\mathrm{KL}}$, with $\beta = 1$.
 
 $$\mathcal{L}_{\text{VAE}} = \mathcal{L}_{\text{recon}} + \beta \mathcal{L}_{\mathrm{KL}}$$
 
