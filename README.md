@@ -110,14 +110,44 @@ ML in this framework enables tractable Bayesian Inference for Complex Luminosity
   <img src="VAE.png" alt="Schematic View of a Variational Autoencoder" width="50%"/>
 </p>
 
-A VAE learns a compressed latent representation $\mathbf{z}$ of the population-level model parameters:
+A VAE learns a compressed latent representation $\mathbf{z}$ of the population-level model parameters.
 
-- **Encoder**: A per-source MLP processes each AGN's features, followed by a selection of sources with the highest neutrino count and an aggregation network that maps the full catalog to a latent distribution $q(\mathbf{z} \mid \mathbf{x}) = \mathcal{N}(\mu, \sigma^2)$.
-- **Decoder**: Maps a latent sample $\mathbf{z}$ back to predicted neutrino counts for every source. The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
-- **Architecture**: Fully connected residual blocks (BN → ReLU → Linear → Dropout) throughout.
+### Inputs to the Network:
 
-After training, inference proceeds by encoding the observed data into $\mathbf{z}$, then evaluating the Poisson log-likelihood of decoder predictions on a grid in latent space to obtain the posterior.
 
+### Encoder: 
+
+A per-source MLP processes each AGN's features, followed by a selection of sources with the highest neutrino count and an aggregation network that maps the full catalog to a latent distribution $q(\mathbf{z} \mid \mathbf{x}) = \mathcal{N}(\mu, \sigma^2)$.
+
+- **Architecture Details**:
+Per-source MLP (4→8→8→8→4) encodes each source independently → top-1000 selection by observed counts → flatten & reduce (5000→256 via Linear+ReLU) → BN+Dropout bridge → 8 pre-activated ResNet blocks (BN→ReLU→Linear→Dropout, dim 256, hidden 512) → Linear output to [μ, log σ²] (~8.8M params)
+
+
+### Training the Network: Loss Functions
+
+
+### Latent Representation: 
+
+encoding the observed data into $\mathbf{z}$
+
+
+#### Asimov Sampling:
+
+### Decoder:
+
+Maps a latent sample $\mathbf{z}$ back to predicted neutrino counts for every source. The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
+
+- **Architecture Details**:
+
+Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2→16→32→64→128→1500) with Dropout(0.2)+ReLU per layer → exp(·)−1 for non-negative predicted rates (~205K params)
+
+### Outputs of the Network
+
+
+## Bayesian Modeling
+
+Here, we evaluate the Poisson log-likelihood of decoder predictions on a grid in latent space to obtain the posterior.
+ 
 ## Statistical Diagnostics
 
 Each model configuration reports:
