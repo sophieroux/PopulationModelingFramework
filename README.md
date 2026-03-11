@@ -137,7 +137,13 @@ Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 �
 ### Outputs of the Network
 
 
-### Training the Network: Loss Functions
+### Training the Network
+
+#### Training Details
+
+#### Loss Functions
+
+As is characteristic for a generic VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss. 
 
 
 #### Asimov Sampling:
