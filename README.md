@@ -143,7 +143,7 @@ Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 �
 
 #### Loss Functions
 
-As is characteristic for a generic VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss. 
+As is characteristic for a generic VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss (Kullback-Leibler divergence). 
 
 
 #### Asimov Sampling:
