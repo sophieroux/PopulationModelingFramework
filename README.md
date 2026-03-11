@@ -91,7 +91,7 @@ $$
 Effectively in the code, for each source \(i\), the observed neutrino count is drawn from a Poisson distribution:
 
 $$
-n_i \sim \mathrm{Poisson}\bigl(10^{\mathrm{norm}} \cdot f_\nu^{(i)} + \mathrm{bg}\bigr)
+n_i \sim \mathrm{Poisson}\bigl(10^{\mathrm{norm}} \cdot f_{\nu,i} + \mathrm{bg}\bigr)
 $$
 
 where `norm` controls the overall signal strength and `bg` is a uniform background rate.
