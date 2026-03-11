@@ -145,7 +145,13 @@ Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 �
 
 ## Bayesian Modeling
 
-Here, we evaluate the Poisson log-likelihood of decoder predictions on a grid in latent space to obtain the posterior.
+At this point, the groundwork has been laid to answer the following question: "Given the data we saw, which populations are plausible?". Essentially, this step defines the population. In an attempt to compute the posterior probability density: 
+
+$$p(\boldsymbol{\xi} \mid \mathbf{n}) \propto p(\mathbf{n} \mid \boldsymbol{\xi}) p(\boldsymbol{\xi})$$
+
+where a flat prior is assumed, $\xi$ are population parameters, n are observed count data, $p(\boldsymbol{\xi} \mid \mathbf{n})$ is the posterior probability density, $p(\mathbf{n} \mid \boldsymbol{\xi})$ is the (Poisson Negative Log-)  Likelihood, and $p(\boldsymbol{\xi})$ is a flat prior. 
+
+The Poisson log-likelihood of decoder predictions is eventually evaluated on a grid in latent space to obtain the posterior.
  
 ## Statistical Diagnostics
 
