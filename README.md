@@ -136,7 +136,7 @@ Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 �
 
 ### Outputs of the Network
 
-As mentioned before, the decoder outputs a non-negative per-source signal prediction $\hat f_{\nu,i}$, the Poisson mean used for the likelihood is then formed by adding a background $\hat\lambda_i = \hat f_{\nu,i} + bg$. 
+As mentioned before, the decoder outputs a non-negative per-source signal prediction $\hat f_{\nu,i}$, the Poisson mean used for the likelihood is then formed by adding a background $\hat\lambda_i = \hat f_{\nu,i} + \text{bg}$. 
 
 ### Training the Network
 
@@ -145,15 +145,6 @@ As mentioned before, the decoder outputs a non-negative per-source signal predic
 As is a characteristic objective for a VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss term that regularizes the latent distribution toward a standard normal prior (Kullback-Leibler divergence) and $\beta = 1$. 
 
 $$\mathcal{L}_{\text{VAE}} = \mathcal{L}_{\text{recon}} + \beta \mathcal{L}_{\mathrm{KL}}$$
-
-$$\mathcal{L}_{\text{recon}}
-= 2\sum_{i=1}^{N}\left[n_i\log\!\left(\frac{n_i}{\lambda_i}\right) - (n_i-\lambda_i)\right]$$
-
-$$\mathcal{L}_{\mathrm{KL}}
-= \mathrm{KL}\!\left(q_\phi(z\mid x)\,\|\,\mathcal{N}(0,I)\right)
-= \frac{1}{2}\sum_{j=1}^{d}\left(\mu_j^2 + \sigma_j^2 - \log\sigma_j^2 - 1\right)$$
-
-where d is the latent dim and $\sigma_j^2=\exp(\log\sigma_j^2)$.
 
 
 #### Training Details
