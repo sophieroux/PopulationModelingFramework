@@ -165,7 +165,9 @@ $$p(\boldsymbol{\xi} \mid \mathbf{n}) \propto p(\mathbf{n} \mid \boldsymbol{\xi}
 
 where $\xi$ are population parameters, $\mathbf{n}$ are observed count data, $p(\boldsymbol{\xi} \mid \mathbf{n})$ is the posterior probability density, $p(\mathbf{n} \mid \boldsymbol{\xi})$ is the (Poisson Negative Log-)  Likelihood, and $p(\boldsymbol{\xi})$ is a flat prior. 
 
-The Poisson log-likelihood of decoder predictions is eventually evaluated on a grid in latent space to obtain the posterior.
+The Poisson log-likelihood of decoder predictions is eventually evaluated on a grid in latent space to obtain the posterior:
+
+$$p(\mathbf{z} | \mathbf{n}) \propto p(\mathbf{n} | \mathbf{z}) p(\mathbf{z})$$
  
 ## Statistical Diagnostics
 
