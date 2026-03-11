@@ -129,14 +129,14 @@ In the latent representation, the observed data is encoded into a low-dimensiona
 
 ### Decoder (Surrogate Forward Model)
 
-The decoder acts as a fast surrogate, takes a latent sample $\mathbf{z}$ and outputs the signal-only per-source mean $\hat{f_{\nu,i}}$. Then, a The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
+The decoder acts as a fast surrogate, takes a latent sample $\mathbf{z}$ and outputs the signal-only per-source mean  $\hat f_{\nu,i}$. Then, a The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
 
 - **Architecture Details**:
 Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 → 32 → 64 → 128 → 1500) with Dropout(0.2) + ReLU per layer → exp(·) - 1 for non-negative predicted rates (~ 205K params)
 
 ### Outputs of the Network
 
-As mentioned before, the decoder outputs a non-negative per-source signal prediction $\hat{f_{\nu,i}}$, the Poisson mean used for the likelihood is then formed by adding a background $\hat\lambda_i = \hat f_{\nu,i} + bg$. 
+As mentioned before, the decoder outputs a non-negative per-source signal prediction $\hat f_{\nu,i}$, the Poisson mean used for the likelihood is then formed by adding a background $\hat\lambda_i = \hat f_{\nu,i} + bg$. 
 
 ### Training the Network
 
