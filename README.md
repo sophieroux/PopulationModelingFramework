@@ -149,7 +149,7 @@ At this point, the groundwork has been laid to answer the following question: "G
 
 $$p(\boldsymbol{\xi} \mid \mathbf{n}) \propto p(\mathbf{n} \mid \boldsymbol{\xi}) p(\boldsymbol{\xi})$$
 
-where a flat prior is assumed, $\xi$ are population parameters, n are observed count data, $p(\boldsymbol{\xi} \mid \mathbf{n})$ is the posterior probability density, $p(\mathbf{n} \mid \boldsymbol{\xi})$ is the (Poisson Negative Log-)  Likelihood, and $p(\boldsymbol{\xi})$ is a flat prior. 
+where a flat prior is assumed, $\xi$ are population parameters, $\mathbf{n}$ are observed count data, $p(\boldsymbol{\xi} \mid \mathbf{n})$ is the posterior probability density, $p(\mathbf{n} \mid \boldsymbol{\xi})$ is the (Poisson Negative Log-)  Likelihood, and $p(\boldsymbol{\xi})$ is a flat prior. 
 
 The Poisson log-likelihood of decoder predictions is eventually evaluated on a grid in latent space to obtain the posterior.
  
