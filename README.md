@@ -125,11 +125,11 @@ Per-source MLP (4 → 8 → 8 → 8 → 4) encodes each source independently →
 
 ### Latent Representation: 
 
-encoding the observed data into $\mathbf{z}$
+In the latent representation, the observed data is encoded into a low-dimensional latent vector $\mathbf{z}$
 
-### Decoder:
+### Decoder (Surrogate Forward Model):
 
-Maps a latent sample $\mathbf{z}$ back to predicted neutrino counts for every source. The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
+The decoder acts as a fast surrogate, takes a latent sample $\mathbf{z}$ and outputs the signal-only per-source mean $\hat{f_{\nu,i}}$. Then, a The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
 
 - **Architecture Details**:
 Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 → 32 → 64 → 128 → 1500) with Dropout(0.2) + ReLU per layer → exp(·) - 1 for non-negative predicted rates (~ 205K params)
@@ -148,6 +148,8 @@ As is characteristic for a generic VAE, the total loss function is made up of tw
 
 #### Asimov Sampling:
 
+The purpose of Asimov sampling is isolating the deterministic effect of changing population parameters, such as thresholds, from random Poisson fluctuations. For a fixed parameter setting, instead of drawing Poisson counts, expected counts from the forward model (mean of the Poisson) are used.
+If one (or several) population paramters $\xi$ are varied smoothly, then Asimov datasets are generated and subsequently passed through the encoder, the smooth trajectory that can be seen in trained latent space. If trajectories are smooth and seperated, the latent space is meaningfully displaying population-level changes. 
 
 ## Bayesian Modeling
 
