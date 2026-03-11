@@ -146,6 +146,13 @@ As is a characteristic objective for a VAE, the total loss function is made up o
 
 $$\mathcal{L}_{\text{VAE}} = \mathcal{L}_{\text{recon}} + \beta \mathcal{L}_{\mathrm{KL}}$$
 
+$$\mathcal{L}_{\text{recon}}
+= 2\sum_{i=1}^{N}\left[n_i\log\!\left(\frac{n_i}{\lambda_i}\right) - (n_i-\lambda_i)\right]$$
+
+$$\mathcal{L}_{\mathrm{KL}}
+= \mathrm{KL}\!\left(q_\phi(z\mid x)\,\|\,\mathcal{N}(0,I)\right)
+= \frac{1}{2}\sum_{j=1}^{d}\left(\mu_j^2 + \sigma_j^2 - \log\sigma_j^2 - 1\right)$$
+
 #### Training Details
 
 Training minimizes the aforementioned objective. Each iteration does a forward pass, computs the loss, then backpropagates and updates parameters.
