@@ -123,15 +123,9 @@ A per-source MLP processes each AGN's features, followed by a selection of sourc
 Per-source MLP (4 → 8 → 8 → 8 → 4) encodes each source independently → top-1000 selection by observed counts → flatten & reduce (5000 → 256 via Linear + ReLU) → BN + Dropout bridge → 8 pre-activated ResNet blocks (BN → ReLU → Linear → Dropout, dim 256, hidden 512) → Linear output to [μ, log σ²] (~ 8.8M params)
 
 
-### Training the Network: Loss Functions
-
-
 ### Latent Representation: 
 
 encoding the observed data into $\mathbf{z}$
-
-
-#### Asimov Sampling:
 
 ### Decoder:
 
@@ -141,6 +135,12 @@ Maps a latent sample $\mathbf{z}$ back to predicted neutrino counts for every so
 Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 → 32 → 64 → 128 → 1500) with Dropout(0.2) + ReLU per layer → exp(·) - 1 for non-negative predicted rates (~ 205K params)
 
 ### Outputs of the Network
+
+
+### Training the Network: Loss Functions
+
+
+#### Asimov Sampling:
 
 
 ## Bayesian Modeling
