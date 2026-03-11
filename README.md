@@ -138,7 +138,6 @@ encoding the observed data into $\mathbf{z}$
 Maps a latent sample $\mathbf{z}$ back to predicted neutrino counts for every source. The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
 
 - **Architecture Details**:
-
 Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2→16→32→64→128→1500) with Dropout(0.2)+ReLU per layer → exp(·)−1 for non-negative predicted rates (~205K params)
 
 ### Outputs of the Network
