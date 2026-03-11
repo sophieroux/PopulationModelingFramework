@@ -112,22 +112,22 @@ ML in this framework enables tractable Bayesian Inference for Complex Luminosity
 
 A VAE learns a compressed latent representation $\mathbf{z}$ of the population-level model parameters.
 
-### Inputs to the Network:
+### Inputs to the Network
 
+The encoder takes a batch of per-source vectors, where each source has its catalog features ( $z$, $L_{\mathrm{bol}}$, $\log M_{\mathrm{BH}}$, $\lambda_{\mathrm{Edd}}$ ) plus one extra feature that encodes the observed count (per-source log count). 
 
-### Encoder: 
+### Encoder
 
 A per-source MLP processes each AGN's features, followed by a selection of sources with the highest neutrino count and an aggregation network that maps the full catalog to a latent distribution $q(\mathbf{z} \mid \mathbf{x}) = \mathcal{N}(\mu, \sigma^2)$.
 
 - **Architecture Details**:
 Per-source MLP (4 → 8 → 8 → 8 → 4) encodes each source independently → top-1000 selection by observed counts → flatten & reduce (5000 → 256 via Linear + ReLU) → BN + Dropout bridge → 8 pre-activated ResNet blocks (BN → ReLU → Linear → Dropout, dim 256, hidden 512) → Linear output to [μ, log σ²] (~ 8.8M params)
 
-
-### Latent Representation: 
+### Latent Representation
 
 In the latent representation, the observed data is encoded into a low-dimensional latent vector $\mathbf{z}$
 
-### Decoder (Surrogate Forward Model):
+### Decoder (Surrogate Forward Model)
 
 The decoder acts as a fast surrogate, takes a latent sample $\mathbf{z}$ and outputs the signal-only per-source mean $\hat{f_{\nu,i}}$. Then, a The decoder is trained so that its output approximates the forward model $f_\nu$ for the parameters encoded in $\mathbf{z}$.
 
@@ -136,17 +136,22 @@ Reparameterize z = μ + σε from 2D latent → simple expanding MLP (2 → 16 �
 
 ### Outputs of the Network
 
+As mentioned before, the decoder outputs a non-negative per-source signal prediction $\hat{f_{\nu,i}}$, the Poisson mean used for the likelihood is then formed by adding a background $\hat\lambda_i = \hat f_{\nu,i} + bg$. 
 
 ### Training the Network
 
-#### Training Details
-
 #### Loss Functions
 
-As is characteristic for a generic VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss (Kullback-Leibler divergence). 
+As is a characteristic objective for a VAE, the total loss function is made up of two parts, reconstruction loss and regularization loss term that regularizes the latent distribution toward a standard normal prior (Kullback-Leibler divergence). 
+
+$$\mathcal{L}_{\text{VAE}} = \mathcal{L}_{\text{recon}} + \beta\,\mathcal{L}_{\mathrm{KL}}$$
+
+#### Training Details
+
+Training minimizes the aforementioned objective. Each iteration does a forward pass, computs the loss, then backpropagates and updates parameters.
 
 
-#### Asimov Sampling:
+### Asimov Sampling:
 
 The purpose of Asimov sampling is isolating the deterministic effect of changing population parameters, such as thresholds, from random Poisson fluctuations. For a fixed parameter setting, instead of drawing Poisson counts, expected counts from the forward model (mean of the Poisson) are used.
 If one (or several) population paramters $\xi$ are varied smoothly, then Asimov datasets are generated and subsequently passed through the encoder, the smooth trajectory that can be seen in trained latent space. If trajectories are smooth and seperated, the latent space is meaningfully displaying population-level changes. 
