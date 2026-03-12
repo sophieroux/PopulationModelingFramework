@@ -96,7 +96,7 @@ $$
 
 where `norm` controls the overall signal strength and `bg` is a uniform background rate.
 
-where $\lambda_{i} = f_{\nu,i} + \mathrm{bg}$ comes from the forward model. $f_{\nu,i}$ are expected signal counts from the flux model. 
+where $\lambda_{i} = f_{\nu,i} + \mathrm{bg}$ comes from the forward model. $f_{\nu,i}$ are expected signal counts. 
 
 ### Statistical Realizations
 
