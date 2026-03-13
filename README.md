@@ -149,7 +149,6 @@ $$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{recon}} + \beta \mathcal{L}_{\
 where $\beta = 1$ in all notebooks.
 
 
-
 #### Training Details
 
 Training minimizes the aforementioned objective. Each iteration does a forward pass, computs the loss, then backpropagates and updates parameters.
