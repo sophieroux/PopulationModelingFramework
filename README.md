@@ -207,5 +207,6 @@ Each model configuration reports:
 ## TODO
 
 - fix H0, H1 naming, odds ratio calc
+- `population_step_nu_lumi.ipynb` from scratch 1) w/ fix norm 2) w/  list norm   (reweight amplitude or not?) 
 - change norm in catalog.ipynb, population_step_nu_lumi.ipynb
 - try full catalog in all notebooks
