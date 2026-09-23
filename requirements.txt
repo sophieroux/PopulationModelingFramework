@@ -1,0 +1,20 @@
+# Core scientific / ML dependencies for the AGN neutrino population modeling notebooks.
+# PyTorch is pinned to the CPU build so the environment stays lean on machines without a GPU.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.8.0+cpu
+
+# The notebooks target the NumPy 1.x API (e.g. np.trapz, removed in NumPy 2.0),
+# so NumPy and pandas are pinned to the last compatible 1.x/2.x lines.
+numpy>=1.26,<2
+scipy>=1.11,<1.16
+pandas>=2.0,<3
+astropy>=6.0,<7
+matplotlib>=3.8
+idna>=3.0
+
+# Tooling to run the Jupyter notebooks (headless execution + kernels).
+jupyter>=1.0
+jupyterlab>=4.0
+nbconvert>=7.0
+ipykernel>=6.0

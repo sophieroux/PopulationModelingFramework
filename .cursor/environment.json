@@ -1,0 +1,4 @@
+{
+  "name": "AGN Neutrino Population Modeling",
+  "install": "bash .cursor/install.sh"
+}
