@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Jupyter/nbconvert executed outputs and generated figures
+figures/
+*_executed.ipynb
+
+# Notebook-generated figures (committed reference images use descriptive names)
+step_model_likelihood_surface.png
+step_model_posterior_density.png
